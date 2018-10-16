@@ -1,0 +1,3 @@
+applications:
+- name: rw-search
+  memory: 128M

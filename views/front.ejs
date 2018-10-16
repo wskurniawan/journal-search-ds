@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Web Service</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+  .container_search{
+  /* margin-top: 20px; */
+  position: relative;
+  margin: 250px;
+  /* margin-left: 100px;
+margin-right: 100px; */
+}
+
+
+.SearchBar {
+position: relative;
+margin-left: 200px;
+height: 35px;  
+width: 700px; 
+border-radius: 10px;
+}
+
+.SearchBar-placeholder {
+  position: absolute;
+  top: 0;
+  padding: 3px 0 0 210px;
+  transition: all 200ms;
+  opacity: 0.5;
+
+}
+
+.SearchBar:focus + .SearchBar-placeholder,
+.SearchBar:valid + .SearchBar-placeholder {
+  font-size: 80%;
+  transform: translate3d(0, -100%, 0);
+  opacity: 1;
+}
+
+</style>
+
+<body style="background:#FCFCEC">
+
+  <div class="container_search" style="width:500px">
+    <form class="form-group" action="/search" target="_blank" method="GET" style="width:100px">
+      <input type="text" id="txt" class="SearchBar" name="query" required>
+      <label class="SearchBar-placeholder" for="txt">Search for title, author, etc</label>
+
+    </form>
+  </div>
+</body>
+
+</html>

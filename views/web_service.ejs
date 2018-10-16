@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Search Result -
+		<%= query %>
+	</title>
+
+	<!-- UIkit CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/css/uikit.min.css" />
+	<link rel="stylesheet" href="/public/css/style.css" />
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+	<div style="min-height: 86px; background-color: #f8f8f8; padding: 48px;">
+		<div class="uk-container uk-width-2-3@l uk-width-1-1@s col-normal">
+			<div uk-grid>
+				<div class="uk-width-auto">
+					<h3>Result</h3>
+				</div>
+				<div class="uk-width-expand col-normal-2" style="margin-left: 42px;" uk-grid>
+					<div class="uk-width-2-3@s">
+						<input class="uk-input" type="text" placeholder="keywords" id="keyword-input" value="<%= query %>">
+					</div>
+					<div class="uk-width-auto col-normal-2">
+						<button class="uk-button uk-button-primary" style="background-color: #69F0AE" id="btn-search">Search</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="uk-container uk-width-2-3@l uk-width-1-1@s col-normal" style="padding-top: 24px;">
+		<% list_result.forEach(function(item){ %>
+		<div class="uk-card uk-card-default uk-card-body" style="margin-bottom: 18px;">
+			<a href="<%= item.url %>">
+				<h4 class="uk-card-title">
+					<%= item.publicationName %>
+				</h4>
+			</a>
+			<p style="font-size: 14px;"><b><%= item.date %></b> - <%= item.title %></p>
+
+			<div class="uk-grid">
+				<div class="uk-width-1-2 uk-flex uk-flex-left">
+					<div class="uk-flex uk-flex-middle">
+						<i class="material-icons" style="color: #D32F2F">person</i> <span style="color:#EF9A9A"><%= item.creator %></span>
+					</div>
+					<div class="uk-flex uk-flex-middle" style="margin-left: 12px;">
+						<i class="material-icons" style="color: #00E676;">web</i> <span style="color: #B9F6CA"><%= item.source %></span>
+					</div>
+				</div>
+				<div class="uk-width-1-2 uk-flex uk-flex-right">
+
+				</div>
+			</div>
+		</div>
+		<% }); %>
+	</div>
+
+	<script>
+		function Search(){
+			console.log('clicked');
+			var query = document.getElementById('keyword-input').value;
+			window.location.href = '/search?query=' + query; 
+		}
+
+		document.getElementById('btn-search').addEventListener('click', function(el, ev){
+			Search();
+		});
+	</script>
+
+	<!-- UIkit JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/js/uikit.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.19/js/uikit-icons.min.js"></script>
+</body>
+
+</html>
